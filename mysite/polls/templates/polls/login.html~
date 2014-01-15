@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        {% load static %}
+        {% load staticfiles %}
+        <link href="{% static "polls/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+        <script type="text/javascript" src="{% static 'polls/bootstrap/js/bootstrap.min.js' %}"></script>
+        <style type="text/css">
+           .lgn {
+               padding: 10px; 
+           }
+        </style>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/signin">Sing in</a></li>
+                    <li class="active"><a href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </head>
+    <body>
+        <form action="/log/" method="post">{% csrf_token %}
+            <div class="lgn">
+                <input type="text" class="input-xlarge" placeholder="Email" name="email">
+            </div>
+            <div class="lgn">
+                <input type="text" class="input-xlarge" placeholder="Nickname" name="nickname">
+            </div>
+            <div class="lgn">
+                <input type="password" class="input-xlarge" placeholder="Password" name="password">
+            </div>
+            <div class="lgn">
+                <button type="submit" class="btn">Login</button>
+            </div>
+        </form>
+    </body>
+</html>

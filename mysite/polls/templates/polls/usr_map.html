@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <meta http-equiv="Content-Type"
+              content="text/html; charset=utf-8"/>
+        <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU"
+              type="text/javascript"></script>
+        <style>
+            #map {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 5px;
+                font-size: 1px;
+            }
+        </style>
+
+        <script type="text/javascript">
+            ymaps.ready(init);
+            var myMap;
+            function init () {
+                    myMap = new ymaps.Map('map', {
+                    center:[56.83560177453174,60.59096176835474],
+                    zoom:16,
+                    behaviors:['default', 'scrollZoom']
+                });
+                myMap.behaviors
+                myMap.options.set('scrollZoomSpeed', 4);
+                myMap.events.add('click', function (e) {
+                    var coords = e.get('coordPosition');
+                    alert(coords);    
+                    var url ="get_info/lat="+coords[0]+"&lng="+coords[1]
+                    document.location = document.location+url;
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <table>
+            <div id="map"></div>
+        </table>
+    </body>
+</html>

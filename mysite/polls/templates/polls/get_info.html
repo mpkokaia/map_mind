@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        {% load staticfiles %}
+        <link href="{% static "polls/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+        <script type="text/javascript" src="{% static 'polls/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <style type="text/css">
+           .layout {
+            width: 100%;
+           }
+           TD {
+            vertical-align: top;
+            padding: 5px; 
+           }
+           TD.leftcol {
+            width: 200px;
+            background: #4099FF;
+            color:#ebf4ff
+           }
+           TD.left {
+            width: 200px;
+            background: #ebf4ff; 
+            color:#132d4c;
+           }
+           TD.rightcol {
+            background: #517fa4; 
+            color:#ebf4ff
+           }
+           .spacer {
+            width: 10px;
+           }
+        </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/map">Map now</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        <table cellspacing="0" class="layout">
+            <tr> 
+                <td class="leftcol">Twitter</td>
+                <td class="spacer"></td>
+                <td class="rightcol">Instagram</td>
+            </tr>  
+            <tr>
+                <td class="left">
+                    <table cellspacing="0" class="layout">
+                        {% for i in tweets %}
+                        <tr>
+                            <td>{{i}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+                <td class="spacer">
+                    <table cellspacing="0" class="layout">
+                        <tr>
+                            <td class="spacer"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="rightcol">
+                    <table cellspacing="0" class="layout">
+                        {% for i in insts %}
+                        <tr>
+                            <td><img src={{i}}></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
+

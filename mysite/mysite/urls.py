@@ -1,0 +1,18 @@
+from django.conf.urls import patterns, include, url
+
+from django.contrib import admin
+admin.autodiscover()
+
+from django.conf import settings
+
+urlpatterns = patterns('',
+    url(r'^$', 'polls.views.index'),
+    (r'^media/(?P<path>.*)$', 'polls.views.static.serve',
+        {'document_root': settings.MEDIA_ROOT}),
+    (r'^map/get_info/(.+)/$', 'polls.views.get_info'),
+    (r'^login$', 'polls.views.login'),
+    (r'^signin$', 'polls.views.signin'),
+    (r'^log/$', 'polls.views.post_login'),
+    (r'^logout/$', 'polls.views.logout'),
+    (r'^map/$', 'polls.views.post_signin'),
+)

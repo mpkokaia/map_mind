@@ -1,0 +1,118 @@
+<!DOCTYPE html><html>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+{% load static %}
+{% load staticfiles %}
+<link href="{% static "polls/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+
+<script type="text/javascript" src="{% static 'polls/bootstrap/js/bootstrap.min.js' %}"></script>
+<style>
+   body {
+    background: url({% static "polls/pic_index.jpg" %}) no-repeat;
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%; /* Современные браузеры */
+   }
+  </style>
+
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li class="active"><a href="">Home</a></li>
+      <li><a href="/signin">Sing in</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </div>
+</div>
+
+<script type='text/javascript'>
+var lwr = 'abcdefghijklmnopqrstuvwxyz ';
+var upr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ';
+ 
+var _idStyle = 25
+var _scroll = 0;
+var _word = 'MAP MIND';
+var _buffer = '';
+var _altBuffer = '';
+var _alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ';
+
+ 
+ 
+
+function zmena()
+{
+    var objBrowser;
+    var buffer = '';
+    var buffer2 = '';
+    var index = 0;
+    _buffer = '';
+ 
+
+    while (index < _word.length)
+    {       
+        if (_word.charAt(index) == " ")           
+        {
+            buffer += "<img border='0' src='http://www.topglobus.ru/font/mezera.gif'>";
+            buffer2 += "[img]http://www.topglobus.ru/font/mezera.gif[/img]";
+        }
+        else
+        {
+            buffer += "<img border='0' src='http://www.topglobus.ru/font/";
+            buffer += _idStyle;
+            buffer += "-";
+            buffer += _word.charAt(index).toLowerCase();
+            buffer += ".gif'>";
+
+            buffer2 += "[img]http://www.topglobus.ru/font/";
+            buffer2 += _idStyle;
+            buffer2 += "-";
+            buffer2 += _word.charAt(index).toLowerCase();
+            buffer2 += ".gif[/img]";
+        }
+        index++;
+    }
+    if ( _scroll>0 )
+    {
+	if (_scroll==1) {smer="left";anim="scroll";}
+	if (_scroll==2) {smer="right";anim="scroll";}
+	if (_scroll==3) {smer="down";anim="scroll";}
+	if (_scroll==4) {smer="up";anim="scroll";}
+	if (_scroll==5) {smer="left";anim="alternate";}
+	if (_scroll==6) {smer="right";anim="alternate";}
+	if (_scroll==7) {smer="down";anim="alternate";}
+	if (_scroll==8) {smer="up";anim="alternate";}
+	if (_scroll==9) {smer="left";anim="slide";}
+	if (_scroll==10) {smer="right";anim="slide";}
+	if (_scroll==11) {smer="down";anim="slide";}
+	if (_scroll==12) {smer="up";anim="slide";}
+        
+        _buffer = "<MARQUEE WIDTH='100%' BEHAVIOR='"+anim+"' SCROLLAMOUNT='5' DIRECTION='"+smer+"'>";
+        _buffer += buffer;
+        _buffer += "</MARQUEE>";
+    }
+    else
+    {
+        _buffer = buffer;
+    }
+ 
+
+    as="<div style='width:100%;text-align:center;'>";
+    sa="</div>";
+
+document.writeln(as+_buffer+sa);
+}
+zmena();
+
+
+</script>
+
+<div>
+<script type="text/javascript" src="{% static "polls/jquery.dajax.core.js" %}"></script>
+
+
+
+
+</div>
+</html>

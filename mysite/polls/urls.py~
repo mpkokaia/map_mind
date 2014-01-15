@@ -1,0 +1,17 @@
+from django.conf.urls import patterns, url
+
+from polls import views
+from django.conf import settings
+
+
+
+urlpatterns = patterns('',
+    url(r'^$', views.index, name='index'),
+    url(r'^map$', views.my_map,name='map'),
+    url(r'^map/get_info?lat=(?P<lat>\d+\.\d*)&lng=(?P<lng>\d+\.\d*)/$', views.get_info),
+    url(r'^login$', views.login,name='login'),
+    url(r'^signin$', views.signin,name='signin'),
+)
+
+
+
